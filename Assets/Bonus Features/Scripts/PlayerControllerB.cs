@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using Random = UnityEngine.Random;
-using NUnit.Framework;
 
 public class PlayerControllerB : MonoBehaviour
 {
@@ -39,6 +38,22 @@ public class PlayerControllerB : MonoBehaviour
     private void OnEnable()
     {
         controls.Player.Enable(); // Enable Input
+    }
+    private void OnDisable()
+    {
+        if (controls != null)
+        {
+            controls.Player.Disable();
+            Debug.Log("Dissable");
+        }
+    }
+    private void OnDestroy()
+    {
+        if (controls != null)
+        {
+            controls.Dispose();
+            Debug.Log("Destroy");
+        }
     }
 
 
